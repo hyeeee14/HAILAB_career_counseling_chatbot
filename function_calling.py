@@ -4,11 +4,6 @@ from config import OPENAI_API_KEY
 #----------------------------------------------------------------------------------------------------
 # function calling
 # ----------------------------------------------------------------------------------------------------
-# 현재 작업 디렉토리 가져오기
-current_directory = os.getcwd()
-
-# 안전한 경로 설정 (배포 환경에서도 유지됨)
-persist_dir = os.path.join(current_directory, "career_saramin")
 
 @tool
 def SearchCareerInfo(query):
