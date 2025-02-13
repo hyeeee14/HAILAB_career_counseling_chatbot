@@ -5,7 +5,7 @@ from function_calling import tools, SearchCareerInfo
 st.set_page_config(
     page_title="HAILAB 진로 상담 챗봇💬",
     page_icon="🙌🏻",
-    layout="wide",
+    layout="centered",
     initial_sidebar_state="collapsed"
 )
 
