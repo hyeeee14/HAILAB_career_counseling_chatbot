@@ -1,9 +1,9 @@
-from config import st, json, openai, tool, ConversationSummaryBufferMemory, chardet, llm
+from config import st, json, openai, tool, ConversationSummaryBufferMemory, chardet
 from function_calling import SearchCareerInfo, SearchSeniorInfo
 
 # setting page config
 st.set_page_config(
-    page_title="HAILAB 진로 상담 챗봇💬",
+    page_title="HAILAB 진로 상담 챗봇💬",ㄴ
     page_icon="🙌🏻",
     layout="wide",
     initial_sidebar_state="collapsed"
