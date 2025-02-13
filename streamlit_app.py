@@ -13,8 +13,8 @@ st.title("진로 상담 챗봇💬")
 st.caption('명성교회 디아스포라 청소년부와 함께할 AI 진로 상담사🥰')
 
 # Chatbot.py
-
 # Initialize chat history
+st.session_state.messages=[]
 response = openai.chat.completions.create(
     model="gpt-4o",
     messages=st.session_state.messages,
@@ -22,7 +22,6 @@ response = openai.chat.completions.create(
     function_call="auto"
 )
 
-st.session_state.messages=[]
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
