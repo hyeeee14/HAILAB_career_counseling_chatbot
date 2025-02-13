@@ -1,4 +1,4 @@
-from config import st, json, openai, tools, ConversationSummaryBufferMemory, chardet, llm
+from config import st, json, openai, tool, ConversationSummaryBufferMemory, chardet, llm
 from function_calling import SearchCareerInfo, SearchSeniorInfo
 
 # setting page config
