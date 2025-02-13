@@ -9,3 +9,4 @@ langchain_community
 langchain_core
 chromadb==0.3.29
 chardet
+langchain_openai

@@ -14,20 +14,11 @@ st.caption('명성교회 디아스포라 청소년부와 함께할 AI 진로 상
 
 # Chatbot.py
 # Initialize chat history
-st.session_state.messages=[]
-
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {"role": "system", "content": st.secrets["system_prompt_S"]},
         {"role": "assistant", "content": "안녕하세요! 저는 오늘 당신과 함께 진로 고민에 대해 이야기 나눠볼 AI 진로 상담사입니다.😊 제가 어떻게 불러주면 좋을까요?"}
     ]
-
-response = openai.chat.completions.create(
-    model="gpt-4o",
-    messages=st.session_state.messages,
-    functions=tools,
-    function_call="auto"
-)
 
 # Initialize memory
 if "memory" not in st.session_state:
@@ -50,6 +41,12 @@ if user_input := st.chat_input():
     st.chat_message("user").write(user_input)
 
     with st.spinner('Please wait...'):
+        response = openai.chat.completions.create(
+            model="gpt-4o",
+            messages=st.session_state.messages,
+            functions=tools,
+            function_call="auto"
+        )
         response_message = response.choices[0].message
         if response_message.function_call:
             function_name = response_message.function_call.name
