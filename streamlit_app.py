@@ -1,5 +1,5 @@
 from config import st, json, openai, tool, ConversationSummaryBufferMemory, chardet, ChatOpenAI, llm
-from function_calling import tools
+from function_calling import tools, SearchCareerInfo
 
 # setting page config
 st.set_page_config(
@@ -69,24 +69,9 @@ if user_input := st.chat_input():
                     messages=st.session_state.messages
                     )
                 assistant_replys = assistant_reply.choices[0].message.content
-            elif function_name == "SearchSeniorInfo":
-                # 함수 실행
-                #function_response = SearchSeniorInfo(function_name)
-                function_response = SearchSeniorInfo(function_args["query"])
-                # 함수 응답을 메시지 이력에 추가
-                st.session_state.messages.append({
-                    "role": "function",
-                    "name": function_name,
-                    "content": function_response["careersenior_info"]
-                })
-                assistant_reply= openai.chat.completions.create(
-                    model="gpt-4o",
-                    messages=st.session_state.messages
-                )
-                assistant_replys = assistant_reply.choices[0].message.content
-        else:        
-            assistant_replys = response.choices[0].message.content
-        # Add assistant response to chat history
-        st.chat_message("assistant").write(assistant_replys)  
-    st.session_state.messages.append({"role": "assistant", "content": assistant_replys})    
-    st.session_state.memory.save_context(inputs={"user": user_input}, outputs={"assistant": assistant_replys})
+            else:        
+                assistant_replys = response.choices[0].message.content
+            # Add assistant response to chat history
+            st.chat_message("assistant").write(assistant_replys)  
+        st.session_state.messages.append({"role": "assistant", "content": assistant_replys})    
+        st.session_state.memory.save_context(inputs={"user": user_input}, outputs={"assistant": assistant_replys})
