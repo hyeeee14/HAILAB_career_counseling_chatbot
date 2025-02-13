@@ -1,4 +1,4 @@
-from config import st, os, TavilySearchResults, TavilySearchAPIWrapper, tool, json, OpenAIEmbeddings, Chroma
+from config import st, os, TavilySearchResults, TavilySearchAPIWrapper, tool, json
 from config import OPENAI_API_KEY, persist_dir
 
 #----------------------------------------------------------------------------------------------------
