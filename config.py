@@ -1,7 +1,7 @@
 # import libraries
 import streamlit as st
 import config as secrets
-import os, json, chardet
+import os, json, chardet, openai
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_community.utilities.tavily_search import TavilySearchAPIWrapper
 from langchain_core.tools import tool
