@@ -1,1 +1,6 @@
 streamlit
+openai
+langchain>=0.0.217
+langchain-community
+chromadb==0.3.29
+chardet
