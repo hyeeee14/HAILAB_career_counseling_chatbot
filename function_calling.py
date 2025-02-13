@@ -27,31 +27,6 @@ def SearchCareerInfo(query):
     }
     return json.dumps(career_info)
 
-@tool
-def SearchSeniorInfo(query):
-    """Get the current Senior_info in RAG"""
-    senior_info = None
-    embedding = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
-    # load from disk (save 이후)
-
-    try:
-        vector = Chroma(persist_directory=persist_dir, embedding_function=embedding, collection_name="career_saramin")
-        print("ChromaDB 문서 개수:", vector._collection.count())
-    except Exception as e:
-        print("Error Loading ChromaDB:", e)
-    # ✅ RAG 기반 검색 수행
-    search_results = vector.similarity_search(query, k=3)  # 🔥 상위 1개 문서 검색
-    # page_content만 리스트로 추출
-    page_contents = [doc.page_content for doc in search_results]
-
-    senior_info = {
-        "name": "senior_info",
-        "query": query,
-        "careersenior_info": page_contents,
-    }
-    return senior_info
-
-
 tools = [
     {
         "name": "SearchCareerInfo",
@@ -63,20 +38,6 @@ tools = [
                     "type": "string",
                     "description": "The search query to look for specific Career information."
                 },            
-            },
-            "required": ["query"]
-        },
-    },
-    {
-        "name": "SearchSeniorInfo",
-        "description": "A retrieval-augmented tool that searches senior career insights based on past interviews and expert testimonials. This tool utilizes ChromaDB and OpenAI Embeddings to find the most relevant career growth strategies, job challenges, and expert advice.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "query": {
-                    "type": "string",
-                    "description": "The search query to look for specific Senior based Career information."
-                },           
             },
             "required": ["query"]
         },
