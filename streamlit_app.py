@@ -1,4 +1,4 @@
-from config import st, json, openai, tool, ConversationSummaryBufferMemory, chardet
+from config import st, json, openai, tool, ConversationSummaryBufferMemory, chardet, ChatOpenAI, llm
 from function_calling import tools
 
 # setting page config
@@ -23,7 +23,7 @@ if "messages" not in st.session_state:
 # Initialize memory
 if "memory" not in st.session_state:
      st.session_state.memory = ConversationSummaryBufferMemory(
-          llm=response,
+          llm=llm,
           max_token_limit=1000,  # 요약의 기준이 되는 토큰 길이를 설정합니다.
           return_messages=True,
           )
