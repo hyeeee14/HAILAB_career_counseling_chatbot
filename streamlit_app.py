@@ -1,5 +1,5 @@
 from config import st, json, openai, tool, ConversationSummaryBufferMemory, chardet
-from function_calling import SearchCareerInfo, SearchSeniorInfo, tools
+from function_calling import tools
 
 # setting page config
 st.set_page_config(
