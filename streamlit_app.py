@@ -1,7 +1,4 @@
-# import libraries
-from openai import OpenAI
-import streamlit as st
-import streamlit_secrets as secrets
+from config import st
 
 # setting page config
 st.set_page_config(
