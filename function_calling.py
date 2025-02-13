@@ -1,5 +1,5 @@
 from config import st, os, TavilySearchResults, TavilySearchAPIWrapper, tool, json
-from config import OPENAI_API_KEY, persist_dir
+from config import OPENAI_API_KEY
 
 #----------------------------------------------------------------------------------------------------
 # function calling
