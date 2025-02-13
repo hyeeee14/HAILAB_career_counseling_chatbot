@@ -15,6 +15,12 @@ st.caption('명성교회 디아스포라 청소년부와 함께할 AI 진로 상
 # Chatbot.py
 
 # Initialize chat history
+response = openai.chat.completions.create(
+    model="gpt-4o",
+    messages=st.session_state.messages,
+    functions=tools,
+    function_call="auto"
+)
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {"role": "system", "content": st.secrets["system_prompt_S"]},
@@ -22,7 +28,7 @@ if "messages" not in st.session_state:
     ]
 if "memory" not in st.session_state:
      st.session_state.memory = ConversationSummaryBufferMemory(
-          llm=llm,
+          llm=response,
           max_token_limit=1000,  # 요약의 기준이 되는 토큰 길이를 설정합니다.
           return_messages=True,
           )
@@ -40,12 +46,6 @@ if user_input := st.chat_input():
     st.chat_message("user").write(user_input)
 
     with st.spinner('Please wait...'):
-        response = openai.chat.completions.create(
-            model="gpt-4o",
-            messages=st.session_state.messages,
-            functions=tools,
-            function_call="auto"
-        )
         response_message = response.choices[0].message
         if response_message.function_call:
             function_name = response_message.function_call.name
