@@ -73,5 +73,5 @@ if user_input := st.chat_input():
             assistant_replys = response.choices[0].message.content
         # Add assistant response to chat history
         st.chat_message("assistant").write(assistant_replys)  
-        st.session_state.messages.append({"role": "assistant", "content": assistant_replys})    
-        st.session_state.memory.save_context(inputs={"user": user_input}, outputs={"assistant": assistant_replys})
+    st.session_state.messages.append({"role": "assistant", "content": assistant_replys})    
+    st.session_state.memory.save_context(inputs={"user": user_input}, outputs={"assistant": assistant_replys})
