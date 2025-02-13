@@ -49,3 +49,35 @@ def SearchSeniorInfo(query):
         "careersenior_info": page_contents,
     }
     return senior_info
+
+
+tools = [
+    {
+        "name": "SearchCareerInfo",
+        "description": "A tool that search the information needed to generate job information according to the prompt based on the given URL.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The search query to look for specific Career information."
+                },            
+            },
+            "required": ["query"]
+        },
+    },
+    {
+        "name": "SearchSeniorInfo",
+        "description": "A retrieval-augmented tool that searches senior career insights based on past interviews and expert testimonials. This tool utilizes ChromaDB and OpenAI Embeddings to find the most relevant career growth strategies, job challenges, and expert advice.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The search query to look for specific Senior based Career information."
+                },           
+            },
+            "required": ["query"]
+        },
+    }
+]

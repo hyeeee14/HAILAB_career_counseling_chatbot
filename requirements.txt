@@ -1,3 +1,7 @@
+
+# requirements.txt 설치하는 법 
+# pip install -r requirements.txt
+
 streamlit
 openai
 langchain>=0.0.217
@@ -5,3 +9,4 @@ langchain_community
 langchain_core
 chromadb==0.3.29
 chardet
+ChatOpenAI
