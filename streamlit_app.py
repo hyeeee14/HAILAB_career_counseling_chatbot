@@ -21,6 +21,9 @@ response = openai.chat.completions.create(
     functions=tools,
     function_call="auto"
 )
+
+st.session_state.messages=[]
+
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {"role": "system", "content": st.secrets["system_prompt_S"]},
