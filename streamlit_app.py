@@ -16,7 +16,7 @@ st.caption('명성교회 디아스포라 청소년부와 함께할 AI 진로 상
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "system", "content": st.secrets["system_prompt_S"]},
+        {"role": "system", "content": st.secrets["system_prompt"]},
         {"role": "assistant", "content": "안녕하세요! 저는 오늘 당신과 함께 진로 고민에 대해 이야기 나눠볼 AI 진로 상담사입니다.😊 제가 어떻게 불러주면 좋을까요?"}
     ]
 
