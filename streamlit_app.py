@@ -44,8 +44,8 @@ if user_input := st.chat_input():
         response = openai.chat.completions.create(
             model="gpt-4o",
             messages=st.session_state.messages,
-            functions=tools,
-            function_call="auto"
+            #functions=tools,
+            #function_call="auto"
         )
         response_message = response.choices[0].message
         if response_message.function_call:
